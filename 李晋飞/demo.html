@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+</head>
+<body>
+<div class="box"></div>
+<script type="text/javascript">
+var box = document.querySelector(".box")
+ajax({
+	"url":"http://localhost:8005/first/test",
+	"type":"get",
+	"success":function(da){
+		var arr = eval("("+da+")").employee
+		console.log(arr);
+		for (var i = 0; i < arr.length; i++) {
+			var div = document.createElement("div");
+			div.innerHTML = arr[i].id+"姓名是:"+arr[i].name+"年龄是:"+arr[i].age+"住址是:"+arr[i].add;
+			box.appendChild(div)
+		}
+	}
+})
+
+function ajax(opt){
+	if('XMLHttpRequest' in window){
+		var xhr = new XMLHttpRequest();
+	}else{
+		var xhr = new ActiveXObject( "Microsoft.XMLHTTP" );
+	}
+
+	if(opt.type == 'get'){
+		xhr.open('get',opt.url+'?'+jsonToString(opt.data),true);
+		xhr.send();
+	}
+	else if(opt.type=='post'){
+		xhr.open('post',opt.url,true);
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xhr.send(jsonToString(opt.data));
+	}
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status>=200&&xhr.status<300||xhr.status==304){
+				opt.success(xhr.responseText);
+			}
+			else{
+				opt.error(xhr.status);
+			}
+		}
+	};
+	function jsonToString(json){
+		var arr = [];
+		for(var i in json){
+			arr.push(i+'='+json[i])
+		};
+		return arr.join('&');
+	}
+}
+</script>
+</body>
+</html>
