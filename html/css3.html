@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<style type="text/css">
+	div {
+		width: 1000px;
+		height: 200px;
+		margin: 10px auto;
+		transform-style:preserve-3d;
+		perspective:2000px;
+		position: relative;
+	}
+	div > img {
+		float: left;
+		width: 200px;
+		height: 150px;
+		transition: .7s;
+	}
+	div > img:nth-child(1){
+		transform: rotateY(100deg);
+		opacity: 0;
+		position: absolute;
+		left: -70px;
+		transform-origin: left center;
+	}
+	div > img:nth-child(7){
+		transform: rotateY(-100deg);
+		position: absolute;
+		left: 450px;
+		opacity: 0;
+		transform-origin: right center;
+
+	}
+	div > img:nth-child(2){
+		transform: rotateY(70deg);
+		z-index: 1;
+		opacity: .5;
+		position: absolute;
+		left: 5px;
+		transform-origin: left center;
+	}
+	div > img:nth-child(3){
+		transform: rotateY(50deg);
+		position: absolute;
+		left: 100px;
+		z-index: 2;
+		opacity: .7;
+		transform-origin: left center;
+
+	}
+	div > img:nth-child(4){
+		transform: rotateY(0deg);
+		position: absolute;
+		left: 238px;
+		transform-origin: center center;
+		z-index: 3;
+	}
+	div > img:nth-child(5){
+		transform: rotateY(-50deg);
+		position: absolute;
+		left: 361px;
+		z-index: 2;
+		opacity: .7;
+		transform-origin: right center;
+
+	}
+	div > img:nth-child(6){
+		transform: rotateY(-70deg);
+		position: absolute;
+		left: 435px;
+		z-index: 1;
+		opacity: .5;
+		transform-origin: right center;
+	}
+	
+	</style>
+</head>
+<body>
+<div>
+	<img src="../images/week/one.jpg">
+	<img src="../images/week/two.jpg">
+	<img src="../images/week/three.jpg">
+	<img src="../images/week/four.jpg">
+	<img src="../images/week/five.jpg">
+	<img src="../images/week/six.jpg">
+	<img src="../images/week/seven.jpg">
+</div>
+<script type="text/javascript">
+var oDiv=document.getElementsByTagName('div')[0];
+var divs=oDiv.children;
+document.onclick=function(e){
+	var w=document.documentElement.clientWidth;
+	if (e.clientX>=(w/2)) {
+		oDiv.insertBefore(divs[divs.length-1],divs[0])
+	}else{
+
+		oDiv.insertBefore(divs[0],divs[divs.length-1])
+	}
+}
+</script>
+</body>
+</html>

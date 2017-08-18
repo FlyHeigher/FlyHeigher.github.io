@@ -1,0 +1,42 @@
+
+	.wrap,.wrap2{
+		width: 700px;
+		height: 400px;
+		margin: 50px auto;
+		overflow: hidden;
+	}
+	.left,.leftone{
+		float: left;
+		width: 640px;
+		height: 400px;
+		overflow: hidden;
+		position: relative;
+	}
+	.con{
+		width: 640px;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		overflow: hidden;
+	}
+	.con img{
+		width: 640px;
+		height: 400px;
+		float: left;
+
+	}
+	.right{
+		float: right;
+		width: 60px;
+		height: 400px;
+		background: orange;
+		position: relative;
+	}
+	.right img{
+		width: 60px;
+		height: 60px;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		cursor: pointer;
+	}

@@ -1,0 +1,27 @@
+@import url(reset.css);
+body {
+  background: #369; }
+
+.header {
+  background: #ccc;
+  width: 90%;
+  height: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: .35s; }
+  .header > div {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 50px;
+    transition: .35s;
+    background: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
+    .header > div + .blue {
+      background: blue; }
+    .header > div:hover {
+      background: red; }
+
+/*# sourceMappingURL=first.css.map */

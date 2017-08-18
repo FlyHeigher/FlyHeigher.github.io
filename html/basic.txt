@@ -1,0 +1,32 @@
+https://www.sass.hk/guide/
+//Ñ§Ï°½Ì³Ì(½¨Òésublime)
+
+//¸üÐÂsass
+gem update sass
+
+//²é¿´sass°æ±¾
+sass -v
+
+//²é¿´sass°ïÖú
+sass -h
+
+
+ÃüÁîÐÐ±àÒë;
+//µ¥ÎÄ¼þ×ª»»ÃüÁî
+sass input.scss output.css
+
+//µ¥ÎÄ¼þ¼àÌýÃüÁî
+sass --watch input.scss:output.css
+
+//Èç¹ûÄãÓÐºÜ¶àµÄsassÎÄ¼þµÄÄ¿Â¼£¬ÄãÒ²¿ÉÒÔ¸æËßsass¼àÌýÕû¸öÄ¿Â¼£º
+sass --watch app/sass:public/stylesheets
+
+在sublime中
+
+利用package control工具可以直接安装这两款插件。
+
+Ctrl+shift+p  ----->install package------->sass、sass build
+
+安装好这两款插件后，查看Tools->Build System可以发了有了SASS和SASS - Compressed两种编译模式。
+首先得新建一个scss文件，比如test.scss(编码必须是UTF-8),并写点Sass代码，保存之后，按下快捷键Ctrl+B
+文件就编译成功

@@ -1,0 +1,58 @@
+/*浏览器重置*/
+
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, form{margin:0;} 
+ol,li,ul {
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	transition: all 0.2s linear 0s;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.clearfix::after {
+	clear: both;
+	display: block;
+	content: "...";
+	visibility: hidden;
+	height: 0;
+	font-size: 0;
+}
+
+.dp {
+	display: block;
+}
+
+.in_block{
+	display: inline-block;
+	font-size: 14px;
+}
+
+.l {
+	float: left;
+}
+
+.r {
+	float: right;
+}
+
+
+.tac {
+	text-align: center;
+}
+
+.cen {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ng-cloak {
+	display: none;
+}

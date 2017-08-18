@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src='../js/vue.min.js'></script>
+	<script type="text/javascript" src='../js/jquery-1.7.2.js'></script>
+	<script type="text/javascript" src='../js/bootstrap.js'></script>
+</head>
+<body>
+<div class="container">
+	<form role='form'>
+		<div class="form-group">
+			<label for='username'>用户名</label>
+			<input type="text" id='username' class='form-control' name="" v-model='user'>
+		</div>
+		<div class="form-group">
+			<label for='username'>年龄</label>
+			<input type="text" id='username' class='form-control' name="" v-model='age'>
+		</div>
+		<div class="form-group">
+			<input type="button" class="btn btn-info" value='添加' @click='add'/>
+			<input type="reset" class="btn btn-danger" value='重置' />
+		</div>
+	</form>
+	
+	<table class="table table-bordered">
+		<caption class="h3 text-info">用户信息表</caption>
+		<tr class="text-danger">
+			<th class="text-center">年龄</th>
+			<th class="text-center">性别</th>
+			<th class="text-center">操作</th>		
+		</tr>
+		<tr v-for='(item,index) in data'>
+			<td class="text-center">{{item.name}}</td>
+			<td class="text-center">{{item.age}}</td>
+			<td class="text-center"><input type="button" class="btn btn-danger" value='删除' @click='remove($event,index)' /></td>
+		</tr>
+		<tr v-show='data.length>0'>
+			<td colspan="3" class="text-center"><input type="button" class="btn btn-sm btn-danger" value="全部删除"/></td>
+		</tr>
+		<tr v-show='data.length<=0'>
+			<td  colspan="3" class="text-center text-info">暂无更多信息</td>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el:'.container',
+		data:{
+			data:[],
+			user:'',
+			age:''
+		},
+		methods:{
+			add:function(){
+				if(this.user!=''&&this.age!=''){
+					this.data.push({name:this.user,age:this.age})
+				}
+				this.user=''
+				this.age=''
+			},
+			remove:function(e,num){
+				this.data.splice(num,1)
+			}
+		}
+	})
+</script>
+
+</body>
+</html>
