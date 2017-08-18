@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        .fixBox {
+            position: fixed;
+            left: 50%;
+            top: 30%;
+            border: solid 1px #ccc;
+            margin-left: -600px;
+            background-color: #fff;
+        }
+        
+        .fixBox a {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            color: #999;
+            font-size: 12px;
+            padding: 0 15px;
+            border-bottom: solid 1px #ccc;
+        }
+        
+        .fixBox .active {
+            background-color: #5d5d5d;
+            color: #FFF;
+        }
+        
+        .content {
+            height: 800px;
+            font-size: 50px;
+        }
+        .content:nth-child(5n - 1){
+            background-color: yellowgreen;
+        }
+        .content:nth-child(5n - 2){
+            background-color: #94a278;
+        }
+        .content:nth-child(5n - 3){
+            background-color: #32e69a;
+        }
+        .content:nth-child(5n - 4) {
+            background-color: #ffa8fc;
+        }
+        .content:nth-child(5n - 5) {
+            background-color: #6c1e69;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixBox" id="fixBox">
+        <a href="javascript:;" class="active">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a><a href="javascript:;">4</a><a href="javascript:;">5</a><a href="javascript:;">6</a><a href="javascript:;">7</a><a href="javascript:;">8</a><a href="javascript:;">9</a><a href="javascript:;">10</a><a href="javascript:;">11</a><a href="javascript:;">12</a>
+    </div>
+    <div>
+        <div class="content">
+            01
+        </div>
+        <div class="content">
+            02
+        </div>
+        <div class="content">
+            03
+        </div>
+        <div class="content">
+            04
+        </div>
+        <div class="content">
+            05
+        </div>
+        <div class="content">
+            06
+        </div>
+        <div class="content">
+            07
+        </div>
+        <div class="content">
+            08
+        </div>
+        <div class="content">
+            09
+        </div>
+        <div class="content">
+            10
+        </div>
+        <div class="content">
+            11
+        </div>
+        <div class="content" style="height:4000px;">
+            12
+        </div>
+    </div>
+
+    <script>
+        var oFix = document.getElementById('fixBox');
+        var aLink = oFix.getElementsByTagName('a');
+
+        var aDiv = document.getElementsByClassName('content');
+        var scrollWin = true, timer = null;
+        
+        for (var i = 0; i < aLink.length; i++) {
+            aLink[i].index = i;
+            aLink[i].onclick = function() {
+                scrollWin = false;
+                
+                for (var i = 0; i < aLink.length; i++) {
+                    aLink[i].className = '';
+                }
+                this.className = 'active';
+               
+                var _this = this;
+                
+                var _top = aDiv[_this.index].offsetTop;
+                var _start = document.body.scrollTop;
+                
+                clearInterval(timer);
+                var n=0;
+                timer = setInterval(function() {
+                    if(scrollWin)clearInterval(timer);
+                    n++;
+                    
+                    var st = document.body.scrollTop;
+                    var speet = (_top - _start) / 20 * n;
+                    
+                    if(n==20){
+                        clearInterval(timer);
+                        scrollWin = true;
+                    }
+                    document.body.scrollTop = _start + speet;
+
+                },10)
+            }
+        }
+        
+        
+        var ch = document.documentElement.clientHeight;
+        
+        window.onscroll = function(){
+            if(!scrollWin) return false;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            
+//            console.log(aDiv[3].offsetTop - scrollTop);
+            
+            for(var i=0;i<aDiv.length;i++){
+                if(aDiv[i].offsetTop - scrollTop <= 10 && scrollTop - aDiv[i].offsetTop < aDiv[i].offsetHeight){
+                    //进入可视区了
+                    aLink[i].className = 'active';
+                }
+                else{
+                    aLink[i].className = '';
+                }
+            }
+        }
+        
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

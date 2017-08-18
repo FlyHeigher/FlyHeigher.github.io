@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>李晋飞的个人网站</title>
+	<meta name="author" content="李晋飞的个人网站">
+	<meta name="copyright" content="李晋飞的个人网站">
+	<meta name="description" content="李晋飞的个人网站,一起和众多前端程序员一起探讨学习、工作上的难题">
+	<meta name="keywords" content="李晋飞的个人网站,解决前端难题,共同进步,共同学习">
+	<meta name="renderer" content="webkit">
+	<link rel="prefetch" href="http://davidwalsh.name/css-enhancements-user-experience" />
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+
+<!-- 弹出框 -->
+	<div class="alert" style='transform: scale(0);'>
+		<form class="request">
+			<span class='fa fa-close fa-2x'></span>
+			<h3>你可以不会解决问题,但必须需要提出问题!</h3>
+			<label for='user'>你的名字:</label>
+			<input type="text" id='user' name="" placeholder='你的名字'>
+			<label for="text">你对最近的知识点有什么困惑或者是想要学习某个新框架?</label>
+			<textarea id="text" placeholdrer='说出来让我们共同进步'></textarea>
+			<button class='send'>发送给我</button>
+		</form>
+	</div>
+	<!-- 主体 -->
+	<div class="main clearfix" style='display: none;'>
+
+	<!-- 导航(吸顶条) -->
+		<div class="nav">
+			<ul class="links clearfix">
+	            <li><a href="javascript:;" data-link-alt="关于我"><span>ABOUT ME</span></a></li>
+	            <li><a href="javascript:;" data-link-alt="技能"><span>SKILLS</span></a></li>
+	            <li><a href="javascript:;" data-link-alt="案例展示"><span>SHOW</span></a></li>
+	            <li><a href="javascript:;" data-link-alt="联系我"><span>CONTACT ME</span></a></li>
+	        </ul>
+		</div>
+		<!-- banner 图 -->
+		<div class="banner">
+			<span class='fa fa-telegram fa-5x animated bounceInDown'></span>
+			<p class='animated bounceInDown'>等你忙完这一阵就可以准备准备忙下一阵子了</p>
+		</div>
+		
+		<!-- 关于我 -->
+		<div class="aboutMe clearfix content">
+			<div class="self">
+				<h3 class='animated '>About me</h3>
+				<p class='animated '>我叫李晋飞,来自山西晋城,今年二十岁</p>
+				<p class='animated '>现在的我是一名web前端攻城狮</p>
+				<p class='animated '>期待迎接未知的挑战...</p>
+			</div>
+			<div class="self_cont">
+				<div class="l">
+					<img src="images/me.gif" class='animated' alt='author'>
+				</div>
+				<div class="r">
+					<p class='animated'>姓名:李晋飞</p>
+					<p class='animated'>Phone:136xxxx4195</p>
+					<p class='animated'>微信:139xxxx1173</p>
+					<p class='animated'>qq:1638546595</p>
+					<p class='animated'>Email:1638546595@qq.com</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- 心情墙 -->
+		<div class="moodWall">
+			<p>Go straight along this road</p>
+		</div>
+
+		<!-- 技能 -->
+		<div class="skill clearfix content">
+			<h3 class='clearfix'>个人技能</h3>
+			<p>一个小时你可以打把英雄联盟,也可以睡个好觉,但是你同样可以掌握一个知识点!</p>
+			<p>欢迎来到我的网站,让我们大家一起共同进步!</p>
+			<p class='clickAlert'>如果你有什么疑问可以试试点击我</p>
+			<div><div>html+css(iconfont)</div></div>
+			<div><div>html5+css3</div></div>
+			<div><div>css预处理器(Sass)</div></div>
+			<div><div>bootstrap</div></div>
+			<div><div>javascript(jquery)</div></div>
+			<div><div>ES5/ES6</div></div>
+			<div><div>Angular</div></div>	
+			<div><div>Vue</div></div>
+			<div><div>React</div></div>
+			<div class='alertInfo''><div>Please click !</div></div>
+			<span class='fa fa-angle-double-down fa-3x animated bounce'></span>
+		</div>
+
+		<!-- 技能详解 -->
+		<div class="skillInfo clearfix">
+			<div>html+css(iconfont)</div>
+			<div class="info"><span data='90%'></span></div>
+			<div>html5+css3</div>
+			<div class="info"><span data='70%'></span></div>
+			<div>css预处理器(Sass)</div>
+			<div class="info"><span data='50%' ></span></div>
+			<div>bootstrap</div>
+			<div class="info"><span data='50%' ></span></div>
+			<div>javascript(jquery)</div>
+			<div class="info"><span data='90%' ></span></div>
+			<div>ES5/ES6</div>
+			<div class="info"><span data='70%' ></span></div>
+			<div>Angular</div>
+			<div class="info"><span data='70%' ></span></div>
+			<div>Vue</div>
+			<div class="info"><span data='70%' ></span></div>
+			<div>React</div>
+			<div class="info"><span data='70%' ></span></div>
+		</div>
+
+		<!-- 心情墙 -->
+		<div class="moodWall moodTwo">
+			<p>世上无难事,只怕有心人</p>
+		</div>
+		<!-- 技能展示 -->
+		<div class="show content">
+			<div class='l'>
+				<h3>利用vue和bootstrap编写一个简单的留言板</h3>
+				<p><a href="html/demo.html">vue+bs(简易留言板)</a></p>
+			</div>
+			<div class='l'>
+				<h3>利用事件监听模拟qq聊天</h3>
+				<p><a href="html/01.html">模拟聊天(localstorage)</a></p>
+			</div>
+			<div class='l'>
+				<h3>钟表</h3>
+				<p><a href="html/cloak.html">利用原生js编写钟表</a></p>
+			</div>
+			<div class='l'>
+				<h3>css预处理器sass初试</h3>
+				<p><a href="html/sass.html">简单的布局用sass(只是初试)</a></p>
+			</div>
+			<div class='l'>
+				<h3>canvas</h3>
+				<p><a href="html/canvas.html">canvas(大树拽动)</a></p>
+			</div>
+			<div class='l'>
+				<h3>原生js</h3>
+				<p><a href="html/snake.html">贪吃蛇无敌版</a></p>
+			</div>
+			<div class='l'>
+				<h3>3d切换</h3>
+				<p><a href="html/css3.html">css3+js</a></p>
+			</div>
+			<div class='l'>
+				<h3>原生js</h3>
+				<p><a href="html/scroll.html">滚动条</a></p>
+			</div>
+			<div class='l'>
+				<h3>jsonp</h3>
+				<p><a href="html/jsonp.html">模仿百度搜索</a></p>
+			</div>
+			<div class='l'>
+				<h3>面向对象</h3>
+				<p><a href="html/face.html">面向对象滚动条</a></p>
+			</div>
+		</div>
+
+		<!-- 联系我 -->
+		<footer class='content'>
+			<div class="clearfix">
+				<div class='l'>
+					<span class='fa fa-weixin fa-3x'></span>
+					微信:xxxxxxxxx
+				</div>
+				<div class='l'>
+					<span class='fa fa-qq fa-3x'></span>
+					qq:1638546595
+				</div>
+				<div class='l'>
+					<span class='fa fa-phone fa-3x'></span>
+					手机:136xxxxxxxx
+				</div>
+			</div>
+		</footer>
+	</div>
+
+<script type="text/javascript" src='js/app.js'></script>
+</body>
+</html>

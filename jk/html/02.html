@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				list-style-type: none;
+			}
+			.box{
+				width: 300px;
+				height: 500px;
+				border:1px solid blue;
+				margin:50px auto;
+				/*position: relative;*/
+			}
+			.box>.top{
+				width: 100%;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				color: white;
+				background: deepskyblue;
+			}
+			.box>.cen{
+				width: 100%;
+				height: 400px;
+				/*background: red;*/
+				margin: 20px auto;
+				box-sizing: border-box;
+				padding:0  10px;
+			}
+			.box>.cen>div{
+				width: 200px;
+				height: 30px;
+				font-size: 16px;
+				line-height: 30px;
+				box-sizing: border-box;
+				padding: 0 10px;
+			}
+			.box>.cen>.left{
+				float:left;
+				margin: 10px auto;
+				background: deepskyblue;
+			}
+			.box>.cen>.right{
+				float:right;
+				margin: 10px auto;
+				background: antiquewhite;
+			}
+			.bottom{
+				width: 100%;
+				height: 30px;
+				background: grey;
+				box-sizing: border-box;
+				padding: 0 10px;
+			}
+			.bottom>input{
+				float:left;
+				width: 220px;
+				height: 20px;
+				line-height: 30;
+				border:1px solid transparent;
+				outline: none;
+				margin-top: 5px;
+				box-sizing: border-box;
+				padding: 0 10px;
+			}
+			.bottom>input:focus{
+				border:1px solid gray;
+			}
+			.bottom>button{
+				float: right;
+				width: 40px;
+				height: 20px;
+				margin-top: 5px;
+				border:0;
+				outline: none;
+				background: lightgreen;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="top">大大</div>
+			<div class="cen">
+			</div>
+			<div class="bottom">
+				<input type="text" placeholder="输入你想说的话"/><button>提交</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var oCen=document.getElementsByClassName('cen')[0],
+				oIn=document.getElementsByTagName('input')[0],
+				ls=window.localStorage,
+				oBu=document.getElementsByTagName('button')[0];
+			oBu.onclick=function(){
+				if(oIn.value!=''){
+					var oDiv=document.createElement('div');
+					oDiv.className='right';
+					oDiv.innerHTML=oIn.value;
+					ls.xx=oIn.value;
+					oCen.appendChild(oDiv)
+					oIn.value='';
+				}
+			}
+			
+			
+		window.addEventListener('storage',function (e) {
+        if(e.newValue!=null&&e.key=='dada'){
+            var oDiv=document.createElement('div');
+            oDiv.className='left';
+            oDiv.innerHTML=e.newValue;
+            oCen.appendChild(oDiv)
+        }
+
+    },0)
+		if(ls.dada){
+				var oDiv=document.createElement('div');
+				oDiv.className='left';
+				oDiv.innerHTML=ls.dada;
+				oCen.appendChild(oDiv)
+		}	
+		if(ls.xx){
+				var oDiv=document.createElement('div');
+				oDiv.className='right';
+				oDiv.innerHTML=ls.xx;
+				oCen.appendChild(oDiv)
+			}
+			
+		</script>
+	</body>
+</html>

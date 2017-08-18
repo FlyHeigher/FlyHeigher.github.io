@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scroll面向对象</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/face.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="left">
+			<div class="con">
+				<img src="../images/face/one.jpg" alt="">
+				<img src="../images/face/two.jpg" alt="">
+				<img src="../images/face/three.jpg" alt="">
+				<img src="../images/face/four.jpg" alt="">
+			</div>
+		</div>
+		<div class="right">
+			<img src="../images/face/one.jpg" alt="">
+		</div>
+	</div>
+
+	<div class="wrap2">
+		<div class="leftone">
+			<div class="con">
+				<img src="../images/face/one.jpg" alt="">
+				<img src="../images/face/two.jpg" alt="">
+				<img src="../images/face/three.jpg" alt="">
+				<img src="../images/face/four.jpg" alt="">
+			</div>
+		</div>
+		<div class="right">
+			<img src="../images/face/one.jpg" alt="">
+		</div>
+	</div>
+	<script>
+		function UserDefinedScroll(wrapClassN,leftOutClassN,conClassN,rightClassN){
+			this.wrap=document.getElementsByClassName(wrapClassN)[0];
+			if(this.wrap){
+				this.left=this.wrap.getElementsByClassName(leftOutClassN)[0];
+				this.con=this.left.getElementsByClassName(conClassN)[0];
+				this.right=this.wrap.getElementsByClassName(rightClassN)[0];
+				this.img=this.right.children[0];
+				var _this=this;
+				this.img.onmousedown=function(e){
+					_this.fnDown(e);
+				}
+			}
+		}
+		UserDefinedScroll.prototype.fnDown=function(e){
+			e.preventDefault();
+			var _this=this;
+			this.sb_y=e.clientY-this.img.getBoundingClientRect().top;
+			document.onmousemove=function(e){
+				_this.fnMove(e);
+			}
+			document.onmouseup=function(){
+				_this.fnUp();
+			}
+		}
+		UserDefinedScroll.prototype.fnMove=function(e){
+			var t=e.clientY-this.sb_y-this.right.getBoundingClientRect().top;
+			if(t<0){
+				t=0;
+			}
+			if(t>this.right.offsetHeight-this.img.offsetHeight){
+				t=this.right.offsetHeight-this.img.offsetHeight;
+			}
+			this.img.style.top=t+"px";
+			var conT=t*(-(this.con.offsetHeight-this.left.offsetHeight))/(this.right.offsetHeight-this.img.offsetHeight);
+			this.con.style.top=conT+"px";
+		}
+		UserDefinedScroll.prototype.fnUp=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+		function NewScroll(wrapClassN,leftOutClassN,conClassN,rightClassN){
+			UserDefinedScroll.apply(this,arguments);
+			var str=window.navigator.userAgent.toLowerCase();
+			var _this=this;
+			if(str.indexOf("firefox")!=-1){
+				this.wrap.addEventListener("DOMMouseScroll",function(e){
+					_this.fnScroll(e);
+				},false)
+			}else{
+				this.wrap.onmousewheel=function(e){
+					_this.fnWheel(e);
+				}
+			}
+		}
+		NewScroll.prototype=new UserDefinedScroll();
+		NewScroll.prototype.fnScroll=function(e){
+			e.preventDefault();
+			if(e.detail>0){//下
+				var t=this.img.offsetTop+10;
+				if(t>this.right.offsetHeight-this.img.offsetHeight){
+					t=this.right.offsetHeight-this.img.offsetHeight;
+				}
+			}else{//上
+				var t=this.img.offsetTop-10;
+				if(t<0){
+					t=0;
+				}
+			}
+			this.img.style.top=t+"px";
+			var conT=t*(-(this.con.offsetHeight-this.left.offsetHeight))/(this.right.offsetHeight-this.img.offsetHeight);
+			this.con.style.top=conT+"px";
+		}
+		NewScroll.prototype.fnWheel=function(e){
+			e.preventDefault();
+			if(e.wheelDelta<0){//下
+				var t=this.img.offsetTop+10;
+				if(t>this.right.offsetHeight-this.img.offsetHeight){
+					t=this.right.offsetHeight-this.img.offsetHeight;
+				}
+			}else{//上
+				var t=this.img.offsetTop-10;
+				if(t<0){
+					t=0;
+				}
+			}
+			this.img.style.top=t+"px";
+			var conT=t*(-(this.con.offsetHeight-this.left.offsetHeight))/(this.right.offsetHeight-this.img.offsetHeight);
+			this.con.style.top=conT+"px";
+		}
+		new UserDefinedScroll("wrap","left","con","right");
+		var t1=new NewScroll("wrap2","leftone","con","right");
+		console.log(t1);
+	</script>
+</body>
+</html>

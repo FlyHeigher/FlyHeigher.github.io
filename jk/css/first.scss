@@ -1,0 +1,42 @@
+$color: #369; 
+$cont-clolr:#ccc;
+$min_color:#fff;
+$width:90%;
+$min-width:100px;
+$height:800px;
+$a:0;
+@import 'reset.css';
+@mixin b-radius {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+body {
+background: $color;
+
+}
+.header{
+	background: $cont-clolr;
+	width:$width;
+	height:$height;
+	margin:$a auto;
+	overflow: hidden;
+	transition:.35s;
+
+		>div {
+			+ .blue {
+				background: blue;
+			}
+			width: $min-width;
+			height: 100px;
+			float: left;
+			margin: 50px;
+			transition:.35s;
+			background:  $min_color;
+			&:hover{
+				background: red;
+			}
+			@include b-radius
+		}
+		
+}

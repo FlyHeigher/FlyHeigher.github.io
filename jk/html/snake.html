@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+			#map{
+				width: 500px;
+				height: 400px;
+				/*background: red;*/
+				position: relative;
+				margin:30px auto;
+			}
+			b{
+				float:left;
+				width:18px;
+				height: 18px;
+				border:1px solid #99CC00;
+			}
+			/*兼容ie低版本*/
+			*b{
+				border:2px solid #99CC00;
+				overflow: hidden;
+			}
+			#snake{
+				width: 20px;
+				height: 20px;
+				background: lime;
+				position: absolute;
+				top:0;
+				left: 0;
+				z-index: 2;
+			}
+			.food{
+				background: green;
+			}
+			span{
+				width: 20px;
+				height: 20px;
+				background: yellow;
+				position: absolute;
+				left: 0;
+				top:0;
+				z-index: 1;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var oB=document.getElementsByTagName('body')[0];
+				//创建蛇圈
+				var map=document.createElement('div');
+				map.id='map';
+				//将蛇圈添加入页面
+				oB.appendChild(map);
+				//将一个又一个盒子放进去
+				for(var i=0;i<500/20*400/20;i++){
+					var B=document.createElement('b');
+					map.appendChild(B)
+				}
+				//创建一个snake放进蛇圈
+				var snake=document.createElement('div');
+				snake.id='snake';
+				map.appendChild(snake);
+//			随机出现food
+		var sm=document.getElementsByTagName('b');
+		var food=Math.round(Math.random()*500/20*400/20);
+		sm[food].className='food';
+		
+		//获取snake
+		var snake_01=document.getElementById('snake')
+		function getStyle(obj,attr){
+//	alert(haha);
+//		obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		if(obj.currentStyle){
+				return parseInt(obj.currentStyle[attr]);
+		}else{
+				return parseInt(getComputedStyle(obj,null)[attr]);
+		}
+}
+		//使snake运动的函数start（）
+		var timer=null;
+		var speed=0;
+		function start(attr,speed){
+			clearInterval(timer)
+			timer=setInterval(
+			function(){
+				snake_01.style[attr]=getStyle(snake_01,attr)+speed+'px'
+				var food01=document.getElementsByClassName('food')[0];
+			if(snake_01.offsetLeft==food01.offsetLeft&&snake_01.offsetTop==food01.offsetTop){
+				food01.removeAttribute('class');//吃
+					//吃完再来一个
+			food=Math.round(Math.random()*500/20*400/20);
+			sm[food].className='food';
+			//加蛇身
+			var s=document.createElement('span');
+			map.appendChild(s)
+			
+			}
+			var Body=document.getElementsByTagName('span');
+			for(var i=Body.length-1;i>0;i--){
+				Body[i].style.left=Body[i-1].offsetLeft+'px';
+				Body[i].style.top=Body[i-1].offsetTop+'px';
+			}
+			Body[0].style.left=snake_01.offsetLeft+'px';
+			Body[0].style.top=snake_01.offsetTop+'px';
+		
+			},200
+			
+		)
+		
+		}
+			start('left',20)
+			//上下左右控制蛇动作
+			document.onkeydown=function(ev){
+				var ev=ev||event;
+//		alert(ev.keyCode)
+				if(ev.keyCode==37){
+					start('left',-20)
+				}if(ev.keyCode==39){
+					
+					start('left',20)
+				}
+				if(ev.keyCode==38){
+					start('top',-20)
+				}
+				if(ev.keyCode==40){
+				start('top',20)
+				}
+		}
+			//碰撞
+				}
+		</script>
+	</head>
+	<body>
+		<!--<div id="map"></div>-->
+	</body>
+</html>
